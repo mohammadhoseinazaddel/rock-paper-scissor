@@ -1,6 +1,7 @@
 import random
-
+from datetime import timedelta, datetime
 from config import GAME_CHOICES, RULES, score_bord
+from decorators import log_time
 
 
 def get_user_choice():
@@ -21,7 +22,7 @@ def get_user_play_again_choice():
     """
     play_again = input("Do you want play again? (y/n)")
     if play_again == 'y':
-        play()
+        play_one_hand()
     elif play_again == 'n':
         pass
     else:
@@ -67,8 +68,7 @@ def update_scorboard(result):
     print('#' * 30)
 
 
-
-def play():
+def play_one_hand():
     """
     main play handler
     """
@@ -92,6 +92,18 @@ def play():
     get_user_play_again_choice()
 
 
+@log_time
+def play():
+    play_one_hand()
+
 if __name__ == '__main__':
+    # start_time = datetime.now()
     play()
+    # end_time = datetime.now()
+    # duration = end_time - start_time
+    # print("total time: ", str(end_time-start_time)[:7])
+    # print(
+    #     f"total time:  {duration} : {duration.seconds} : {duration.seconds // 3600} :{duration.seconds // 60}"
+    #     f" :{duration.seconds % 60}",
+    # )
 
