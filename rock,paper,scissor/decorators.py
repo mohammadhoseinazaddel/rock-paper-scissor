@@ -16,6 +16,6 @@ def log_time(func):
         return result
     return  wrapped_function
 
-@log_time
-def pow2(num):
-    return num**2
+# @log_time
+# def pow2(num):
+#     return num**2
